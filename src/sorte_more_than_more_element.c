@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_is_sort.c                                    :+:      :+:    :+:   */
+/*   sorte_more_than_more_element.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddaou <mhaddaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:38:05 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/03/19 01:35:28 by mhaddaou         ###   ########.fr       */
+/*   Created: 2022/03/17 04:06:36 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/03/19 03:31:25 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	check_is_sorted(t_stacks *stacks, int order)
+void	sorte_more_than_more_element(t_stacks *stacks)
 {
+	int	pivot;
+	int	mid;
 	int	i;
-	int	j;
 
 	i = 0;
-	if (order == SA)
+	while (1)
 	{
-		while (i < stacks->size_a)
+		if (stacks->size_a == 7)
+			break ;
+		pivot = meduime(stacks->a, stacks->size_a, BIGG);
+		mid = get_mid(stacks->a, stacks->size_a, BIGG);
+		while (1)
 		{
-			j = i + 1;
-			while (j < stacks->size_a)
-			{
-				if (stacks->a[i] > stacks->a[j])
-					return (EXIT_FAILURE);
-				j++;
-			}
-			i++;
+			if (check_is_not_down_pivote(stacks, pivot) == EXIT_FAILURE)
+				break ;
+			if (pivot > stacks->a[0])
+				push_and_check(stacks, pivot, mid);
+			else
+				ft_ra(stacks);
 		}
 	}
-	return (EXIT_SUCCESS);
+	sorte_five_element(stacks, mid, i);
+	push_to_a(stacks);
 }

@@ -1,29 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sorte_stack_tmp.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddaou <mhaddaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:08:52 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/03/18 20:51:20 by mhaddaou         ###   ########.fr       */
+/*   Created: 2022/03/18 22:12:17 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/03/18 22:30:27 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+int	*ft_sort(int *arr, int len)
 {
-	t_stacks	stacks;
+	int	i;
+	int	j;
+	int	tmp;
 
-	if (ac > 1)
+	i = 0;
+	while (i < len - 1)
 	{
-		av ++;
-		if (ac == 2)
-			av = ft_split(*av, ' ');
-		if (check_argument(ac, av) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
-		push_swap_element(av, &stacks);
+		j = i + 1;
+		while (j < len)
+		{
+			if (arr[i] > arr[j])
+			{
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+			j++;
+		}
+		i++;
 	}
-	return (EXIT_SUCCESS);
+	return (arr);
+}
+
+int	*copy_element(int *tab, int *arr, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		arr[i] = tab[i];
+		i++;
+	}
+	return (arr);
 }

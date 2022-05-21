@@ -1,29 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddaou <mhaddaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:08:52 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/03/18 20:51:20 by mhaddaou         ###   ########.fr       */
+/*   Created: 2022/03/18 22:14:42 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/03/18 23:15:34 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+void	ft_push_rb(t_stacks *stacks, int i)
 {
-	t_stacks	stacks;
-
-	if (ac > 1)
+	while (i)
 	{
-		av ++;
-		if (ac == 2)
-			av = ft_split(*av, ' ');
-		if (check_argument(ac, av) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
-		push_swap_element(av, &stacks);
+		ft_rb(stacks);
+		i--;
 	}
-	return (EXIT_SUCCESS);
+	ft_pa(stacks);
+}
+
+void	ft_push_rrb(t_stacks *stacks, int j)
+{
+	while (j)
+	{
+		ft_rrb(stacks);
+		j--;
+	}
+	ft_pa(stacks);
+}
+
+void	whatdid(t_stacks *stacks)
+{
+	if (stacks->a[0] > stacks->a[1])
+	{
+		ft_sa(stacks);
+		ft_pb(stacks);
+	}
+	else
+		ft_pb(stacks);
 }

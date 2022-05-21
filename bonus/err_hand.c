@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   err_hand.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <mhaddaou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mhaddaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:08:52 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/03/18 20:51:20 by mhaddaou         ###   ########.fr       */
+/*   Created: 2022/03/19 02:04:46 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/03/19 02:04:47 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+int	err_hand(t_stacks *stacks, int err)
 {
-	t_stacks	stacks;
-
-	if (ac > 1)
+	if (err == 1)
 	{
-		av ++;
-		if (ac == 2)
-			av = ft_split(*av, ' ');
-		if (check_argument(ac, av) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
-		push_swap_element(av, &stacks);
+		free(stacks->a);
+		free(stacks->b);
+		ft_putstr_fd("Error\n", 2);
 	}
-	return (EXIT_SUCCESS);
+	if (err == SORTED)
+	{
+		free(stacks->a);
+		free(stacks->b);
+	}
+	if (err == 3)
+	{
+		free(stacks->a);
+		free(stacks->b);
+	}
+	exit (EXIT_SUCCESS);
 }

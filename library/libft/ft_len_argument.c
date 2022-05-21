@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_len_argument.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddaou <mhaddaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:08:52 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/03/18 20:51:20 by mhaddaou         ###   ########.fr       */
+/*   Created: 2022/03/17 22:00:10 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/03/19 02:24:41 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	len_argument(char **av)
 {
-	t_stacks	stacks;
+	int	i;
 
-	if (ac > 1)
+	i = 0;
+	while (*av)
 	{
-		av ++;
-		if (ac == 2)
-			av = ft_split(*av, ' ');
-		if (check_argument(ac, av) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
-		push_swap_element(av, &stacks);
+		av++;
+		i++;
 	}
-	return (EXIT_SUCCESS);
+	return (i);
 }

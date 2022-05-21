@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_check_is_int.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddaou <mhaddaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:08:52 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/03/18 20:51:20 by mhaddaou         ###   ########.fr       */
+/*   Created: 2022/03/17 21:49:35 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/03/19 02:31:02 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	check_is_int(char *str)
 {
-	t_stacks	stacks;
+	int	i;
+	int	len;
 
-	if (ac > 1)
+	i = 0;
+	len = (int)ft_strlen(str);
+	while (i < len)
 	{
-		av ++;
-		if (ac == 2)
-			av = ft_split(*av, ' ');
-		if (check_argument(ac, av) == EXIT_FAILURE)
+		if (ft_isdigit(str[i]) == EXIT_SUCCESS)
+		{
+			ft_putstr_fd("Error\n", 2);
 			return (EXIT_FAILURE);
-		push_swap_element(av, &stacks);
+		}
+		i++;
 	}
+	if (check_maxint(str) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

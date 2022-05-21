@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaddaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mhaddaou <mhaddaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 08:14:37 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/02/28 18:57:36 by mhaddaou         ###   ########.fr       */
+/*   Updated: 2022/03/19 02:23:29 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,11 @@ char	*gnl_output_without_bn(char **str, int read_return);
 char	*ft_gnl_get_end(char *str);
 char	*ft_gnl_get_begin(char *str);
 char	*gnl_without_bn(int fd);
+int		check_is_int(char *str);
+int		check_maxint(char *str);
+int		check_argument(int ac, char **av);
+int		len_argument(char **av);
+int		ft_strcmp(const char *s1, const char *s2);
+char	*get_next_line(int fd);
 
 #endif

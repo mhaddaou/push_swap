@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaddaou <mhaddaou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:08:52 by mhaddaou          #+#    #+#             */
-/*   Updated: 2022/03/18 20:51:20 by mhaddaou         ###   ########.fr       */
+/*   Created: 2022/03/18 05:53:23 by mhaddaou          #+#    #+#             */
+/*   Updated: 2022/03/19 02:22:41 by mhaddaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+char	*get_next_line(int fd)
 {
-	t_stacks	stacks;
+	char	str[8000000];
+	int		i;
+	char	buff[1];
+	int		byte;
 
-	if (ac > 1)
+	byte = read(fd, buff, 1);
+	i = 0;
+	while (byte > 0)
 	{
-		av ++;
-		if (ac == 2)
-			av = ft_split(*av, ' ');
-		if (check_argument(ac, av) == EXIT_FAILURE)
-			return (EXIT_FAILURE);
-		push_swap_element(av, &stacks);
+		str[i++] = buff[0];
+		if (buff[0] == '\n')
+			break ;
+		byte = read(fd, buff, 1);
 	}
-	return (EXIT_SUCCESS);
+	str[i] = '\0';
+	if (str[0] == '\0')
+		return (0);
+	return (ft_strdup(str));
 }
